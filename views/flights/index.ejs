@@ -1,0 +1,29 @@
+<%- include('../partials/header.ejs') %>
+<main>
+<table class="table table-hover flights table-sm">
+    <thead>
+    <tr>
+    <th scope="col">Airline</th>
+    <th scope="col">Airport</th>
+    <th scope="col">Flight Number</th>
+    <th scope="col">Departs</th>
+    <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% data.forEach(item => { %>
+        <tr>
+            <td><%= item.airline %></td>
+            <td><%= item.airport %></td>
+            <td><%= item.flightNo %></td>
+            <td><%= item.departs.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %></td>
+            <td>
+                <form class="inline-frm" action="/flights/<%= item.id %>?_method=DELETE" method="POST"><button class="btn btn-light action">X</button></form>
+                <a href="/flights/<%= item.id %>"><button class="btn btn-light action">✏️</button></a>
+            </td>
+        </tr>
+    <% }) %>
+</tbody>
+</table>
+</main>
+<%- include('../partials/footer.ejs') %>

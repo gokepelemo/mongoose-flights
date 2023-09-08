@@ -1,0 +1,74 @@
+<%- include('../partials/header.ejs') %>
+<main>
+<h3 class="label">Flight Number</h3>
+<%= flights.flightNo %>
+<h3 class="label">Airline</h3>
+<%= flights.airline %>
+<h3 class="label">Airport</h3>
+<%= flights.airport %>
+<h3 class="label">Departure Time</h3>
+<%= flights.departs.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %><br>
+<h3 class="destinations label">Destinations
+<button class="btn-primary" id="newDestinationButton">+</button>
+</h3>
+<div class="collapse" id="newDestination">
+<form class="destinations" method="POST" action="/flights/<%= flights.id %>/destinations">
+<label for="airport">Airport</label>
+<select name="airport" class="form-control">
+<% airportOptions.forEach(item => {%>
+<option name="<%= item %>"><%= item %></option>
+<% }) %>
+</select>
+<label for="arrival">Arrival Time</label>
+<input type="datetime-local" name="arrival" class="form-control" value="<%= defaultDate %>" />
+<button type="submit" class="btn btn-light">Add Destination</button>
+</form>
+</div>
+<% if (flights.destinations.length > 0) {%>
+<table class="table table-sm destinations">
+<thead>
+<th>Airport</th>
+<th>Arrival Time</th>
+<th>Actions</th>
+</thead>
+<% }%>
+<% flights.destinations.sort(function(a,b) {
+    return Date.parse(a.arrival)-Date.parse(b.arrival)
+    }).forEach((item,index) => { %>
+<tr>
+<td><%= item.airport %></td>
+<td><%= item.arrival.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %></td>
+<td><form class="inline-frm" action="/destinations/<%= flights.id %>?id=<%= index %>&_method=DELETE" method="POST"><button class="btn btn-light action">X</button></form></td>
+</tr>
+<% })%>
+</table>
+<h3 class="tickets label">Tickets
+<button class="btn-primary" id="newTicketButton">+</button>
+</h3>
+<div class="collapse" id="newTicket">
+<form class="tickets" method="POST" action="/flights/<%= flights.id %>/tickets">
+<label for="seat">Seat</label>
+<input type="text" name="seat" required pattern="[A-F][1-9]\d?" class=form-control /><br>
+<label for="price">Price</label>
+<input type="text" name="price" class="form-control" placeholder="$" />
+<button type="submit" class="btn btn-light">Add Ticket</button>
+</form>
+</div>
+<% if (tickets.length > 0) {%>
+<table class="table destinations table-sm">
+<thead>
+<th>Seat</th>
+<th>Price</th>
+<th>Actions</th>
+</thead>
+<% }%>
+<% tickets.forEach((item,index) => { %>
+<tr>
+<td><%= item.seat %></td>
+<td>$<%= item.price %></td>
+<td><form class="inline-frm" action="/tickets/<%= item.id %>?flight=<%= flights.id %>&_method=DELETE" method="POST"><button class="btn btn-light action">X</button></form></td>
+</tr>
+<% })%>
+</table>
+</main>
+<%- include('../partials/footer.ejs') %>

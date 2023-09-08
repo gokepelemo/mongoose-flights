@@ -1,0 +1,72 @@
+body {
+  padding: 50px;
+  font: 16px Arial, sans-serif;
+}
+
+main {
+  margin: 2rem;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  margin: 1rem 0 0 1rem;
+}
+
+h3 {
+  padding: 1.25rem 0;
+}
+
+h3.label {
+  font-size: 1.25rem;
+}
+
+form.new-flight {
+  width: 50%;
+}
+
+form.new-flight label {
+  margin: 0.5rem 0;
+  display: block;
+}
+
+table {
+  width: 100%;
+}
+
+th,td {
+  vertical-align: middle;
+}
+
+.flights button {
+  width: 2rem;
+  height: 2rem;
+  padding: 1px;
+}
+
+.site-brand {
+  padding: 0 1rem;
+}
+
+.inline-frm {
+  display: inline-block;
+}
+
+ul.navbar-nav {
+  color: white;
+}
+
+form.destinations,form.tickets {
+  width: 50%;
+  margin: 0 0 5rem 0;
+}
+
+.destinations label,button {
+  margin: 1rem 0 0.5rem 0;
+}
+
+h3.destinations {
+  display: inline-block;
+}

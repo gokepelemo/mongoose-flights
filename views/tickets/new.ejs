@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<main>
+<h4>Flight <%= flightDetails.flightNo %></h4><br>
+<p>Airport: <%= flightDetails.airport %></p>
+<p>Airline: <%= flightDetails.airline %></p><br>
+<form class="tickets" method="POST" action="/flights/<%= flight %>/tickets">
+<% if(errorMsg) {%>
+<div class="alert alert-warning" role="alert">
+  Error: <%= errorMsg %>
+</div>
+<% }%>
+<label for="seat">Seat</label>
+<input type="text" name="seat" required pattern="[A-F][1-9]\d?" class=form-control /><br>
+<label for="price">Price</label>
+<input type="text" name="price" class="form-control" placeholder="$" />
+<button type="submit" class="btn btn-light">Add Ticket</button>
+</form>
+</main>
+<%- include('../partials/footer') %>
