@@ -26,11 +26,6 @@ async function deleteFlight(req,res,next) {
     res.redirect('/flights')
 }
 
-async function updateFlight(req,res,next) {
-    Flight.findByIdAndUpdate(req.params.id, req.body)
-    res.redirect('/flights')
-}
-
 async function showFlight(req,res,next) {
     let flightDetails = await Flight.findById(req.params.id).exec()
     let ticketDetails = await Ticket.find({flight: req.params.id}).exec()
@@ -57,6 +52,5 @@ module.exports = {
     create,
     new: newFlight,
     delete: deleteFlight,
-    update: updateFlight,
     show: showFlight
 }

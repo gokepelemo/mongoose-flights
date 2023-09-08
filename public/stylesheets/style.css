@@ -70,3 +70,12 @@ form.destinations,form.tickets {
 h3.destinations {
   display: inline-block;
 }
+
+.fun {
+  text-align: center;
+  margin: 1rem;
+}
+
+.navbar-nav {
+  margin-right: 1rem;
+}
