@@ -12,7 +12,7 @@ async function create(req,res,next) {
     }
     catch (err) {
         console.log(err)
-        res.render('tickets/new', {title: `New Ticket`, errorMsg: err})
+        res.render('tickets/new', {title: `New Ticket`, flight: req.params.id, flightDetails, errorMsg: err})
     }
 }
 
