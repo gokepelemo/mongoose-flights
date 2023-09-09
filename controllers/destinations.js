@@ -1,4 +1,3 @@
-// TODO: re-evaluate the use of async/await and try/catch for errors
 let Flight = require('../models/flight');
 
 async function create(req,res,next) {

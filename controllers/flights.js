@@ -1,7 +1,10 @@
-// TODO: re-evaluate the use of async/await and try/catch for errors
 let Flight = require('../models/flight');
 let Ticket = require('../models/ticket');
 let Defaults = require('../models/defaults');
+
+function extractId(id) {
+    return id.toString().replace('new ObjectId("','').replace('")','')
+}
 
 function defaultDate() {
     const newFlight = new Flight();
@@ -17,8 +20,8 @@ async function index(req,res,next) {
 }
 
 async function create(req,res,next) {
-    await Flight.create(req.body)
-    res.redirect('/flights')
+    let newFlight = await Flight.create(req.body);
+    res.redirect(`/flights/${extractId(newFlight._id)}`)
 }
 
 async function deleteFlight(req,res,next) {
