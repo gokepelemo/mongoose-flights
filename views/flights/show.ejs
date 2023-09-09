@@ -12,7 +12,7 @@
 <button class="btn-primary" id="newDestinationButton">+</button>
 </h3>
 <div class="collapse" id="newDestination">
-<form class="destinations" method="POST" action="/flights/<%= flights.id %>/destinations">
+<form class="destinations flight-frm" method="POST" action="/flights/<%= flights.id %>/destinations">
 <label for="airport">Airport</label>
 <select name="airport" class="form-control">
 <% airportOptions.forEach(item => {%>
@@ -46,9 +46,11 @@
 <button class="btn-primary" id="newTicketButton">+</button>
 </h3>
 <div class="collapse" id="newTicket">
-<form class="tickets" method="POST" action="/flights/<%= flights.id %>/tickets">
+<form class="tickets flight-frm" method="POST" action="/flights/<%= flights.id %>/tickets">
 <label for="seat">Seat</label>
-<input type="text" name="seat" required pattern="[A-F][1-9]\d?" class=form-control /><br>
+<input type="text" name="seat" required pattern="[A-F][1-9]\d?" class=form-control />
+<small>Seat numbers need to be from [A-F][1-9], example: A2</small>
+<br><br>
 <label for="price">Price</label>
 <input type="text" name="price" class="form-control" placeholder="$" />
 <button type="submit" class="btn btn-light">Add Ticket</button>

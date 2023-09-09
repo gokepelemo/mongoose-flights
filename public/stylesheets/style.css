@@ -62,8 +62,7 @@ form.destinations,form.tickets {
   width: 50%;
   margin: 0 0 5rem 0;
 }
-
-.destinations label,button {
+.flight-frm label,button {
   margin: 1rem 0 0.5rem 0;
 }
 
@@ -78,4 +77,8 @@ h3.destinations {
 
 .navbar-nav {
   margin-right: 1rem;
+}
+
+input[type="text"]:invalid {
+  border-color: red;
 }
