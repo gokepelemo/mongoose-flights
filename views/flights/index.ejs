@@ -1,5 +1,6 @@
 <%- include('../partials/header.ejs') %>
 <main>
+<% if (data.length > 0) {%>
 <table class="table table-hover flights table-sm">
     <thead>
     <tr>
@@ -25,5 +26,8 @@
     <% }) %>
 </tbody>
 </table>
+<% } else { %>
+<p>There are no flights. <a href="/flights/new">Add one now</a>.</p>
+<% } %>
 </main>
 <%- include('../partials/footer.ejs') %>
