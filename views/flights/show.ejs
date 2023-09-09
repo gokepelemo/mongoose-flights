@@ -15,6 +15,9 @@
 <form class="destinations flight-frm" method="POST" action="/flights/<%= flights.id %>/destinations">
 <label for="airport">Airport</label>
 <select name="airport" class="form-control">
+<% flights.destinations.map(item => item.airport).forEach(item => {
+    if (airportOptions.indexOf(item) !== -1) airportOptions.splice(airportOptions.indexOf(item),1)
+}) %>
 <% airportOptions.forEach(item => {%>
 <option name="<%= item %>"><%= item %></option>
 <% }) %>
