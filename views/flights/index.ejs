@@ -12,8 +12,10 @@
     </tr>
     </thead>
     <tbody>
-    <% data.forEach(item => { %>
-        <tr>
+    <% data.sort(function(a,b) {
+      return Date.parse(a.departs)-Date.parse(b.departs)
+    }).forEach(item => { %>
+        <tr class="<%= `${item.departs < Date.now() ? "red" : ""}` %>">
             <td><%= item.airline %></td>
             <td><%= item.airport %></td>
             <td><%= item.flightNo %></td>

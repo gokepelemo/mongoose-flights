@@ -82,3 +82,7 @@ h3.destinations {
 input[type="text"]:invalid {
   border-color: red;
 }
+
+.red td {
+  color: red;
+}
